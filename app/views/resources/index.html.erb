@@ -32,10 +32,17 @@
           <div class="panel-heading">
             <h3 class="panel-title">
               <i class="glyphicon
-                <% if resource.medium == "Other" %> glyphicon-asterisk<% end %>
-                <% if resource.medium == "Book" %> glyphicon-book<% end %>
-                <% if resource.medium == "Tutorial" %> glyphicon-file<% end %>
-                <% if resource.medium == "Video" %> glyphicon-film<% end %>
+                <% if resource.medium == "Book" %>
+                  glyphicon-book
+                <% elsif resource.medium == "Tutorial/Article" %>
+                  glyphicon-file
+                <% elsif resource.medium == "Video" %>
+                  glyphicon-film
+                <% elsif resource.medium == "Interactive Course" %>
+                  glyphicon-education
+                <% else resource.medium == "Other" %>
+                  glyphicon-asterisk
+                <% end %>
               "></i>&nbsp;
               <%= link_to resource.link do %>
                 <%= resource.title %>
