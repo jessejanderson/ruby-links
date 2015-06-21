@@ -1,29 +1,52 @@
-<p id="notice"><%= notice %></p>
+<header class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>
+        Resource Details
+      </h2>
+    </div>
+  </div>
+</header>
 
-<p>
-  <strong>Title:</strong>
-  <%= @resource.title %>
-</p>
+<hr/>
 
-<p>
-  <strong>Link:</strong>
-  <%= @resource.link %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p id="notice"><%= notice %></p>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <p>
+            <strong>Title:</strong>
+            <%= @resource.title %>
+          </p>
 
-<p>
-  <strong>Medium:</strong>
-  <%= @resource.medium %>
-</p>
+          <p>
+            <strong>Link:</strong>
+            <%= @resource.link %>
+          </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @resource.rating %>
-</p>
+          <p>
+            <strong>Medium:</strong>
+            <%= @resource.medium %>
+          </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @resource.body %>
-</p>
+          <p>
+            <strong>Rating:</strong>
+            <%= @resource.rating %>
+          </p>
 
-<%= link_to 'Edit', edit_resource_path(@resource) %> |
-<%= link_to 'Back', resources_path %>
+          <p>
+            <strong>Body:</strong>
+            <%= @resource.body %>
+          </p>
+          <%= link_to 'Edit', edit_resource_path(@resource), class: "btn btn-success pull-right" %>
+          <%= link_to 'Home', resources_path, class: "btn btn-primary" %>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
