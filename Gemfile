@@ -7,7 +7,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
 
 # Heroku Stuff
 gem 'pg', group: :production
