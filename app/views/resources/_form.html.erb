@@ -1,0 +1,39 @@
+<%= bootstrap_form_for(@resource) do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul>
+      <% @resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :title %>
+  <%= f.text_field :link %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.select :rating, [
+                              [1, 1],
+                              [2, 2],
+                              [3, 3],
+                              [4, 4],
+                              [5, 5]
+                            ] %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.select :medium, [
+                              ["Other", "Other"],
+                              ["Book", "Book"],
+                              ["Tutorial", "Tutorial"],
+                              ["Video", "Video"]
+                            ] %>
+    </div>
+  </div>
+  <%= f.text_area :body, label: "Additional Info" %>
+  <%= f.submit "Save Resource", class: "btn btn-success pull-right" %>
+  <%= link_to 'Cancel', resources_path, class: "btn btn-danger" %>
+
+<% end %>

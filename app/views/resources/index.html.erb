@@ -1,0 +1,78 @@
+<% if notice %><p id="notice"><%= notice %></p><% end %>
+
+
+<header class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>
+        Ruby/Rails Resources
+        <span class="pull-right">
+          <%= link_to new_resource_path, class: "btn btn-success" do %>
+            <i class="glyphicon glyphicon-plus"></i> Add New Resource
+          <% end %>
+        </span>
+      </h2>
+    </div>
+  </div>
+</header>
+
+<hr/>
+
+<div class="container">
+  <div class="row">
+    <% @resources.order('rating DESC').each do |resource| %>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <div class="panel
+          <% if resource.rating == 5 %>panel-success
+          <% elsif resource.rating == 4 %>panel-info
+          <% elsif resource.rating == 3 %>panel-warning
+          <% elsif resource.rating == 2 %>panel-danger
+          <% else %>panel-danger<% end %>
+          ">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <i class="glyphicon
+                <% if resource.medium == "Other" %> glyphicon-asterisk<% end %>
+                <% if resource.medium == "Book" %> glyphicon-book<% end %>
+                <% if resource.medium == "Tutorial" %> glyphicon-file<% end %>
+                <% if resource.medium == "Video" %> glyphicon-film<% end %>
+              "></i>&nbsp;
+              <%= link_to resource.link do %>
+                <%= resource.title %>
+              <% end %>
+            </h3>
+          </div>
+          <% if resource.rating? or resource.medium? or resource.body? %>
+            <ul class="list-group">
+            <% if resource.rating? %>
+              <li class="list-group-item">
+                <strong>Rating:</strong> <%= resource.rating %> / 5
+              </li>
+            <% end %>
+            <% if resource.medium? %>
+              <li class="list-group-item">
+                <strong>Medium:</strong> <%= resource.medium %>
+              </li>
+            <% end %>
+            <% if resource.body? %>
+              <li class="list-group-item">
+                <%= resource.body %>
+              </li>
+            <% end %>
+            </ul>
+          <% end %>
+          <div class="panel-footer clearfix">
+            <div class="pull-ddright">
+              <%= link_to edit_resource_path(resource), class: "btn btn-sm btn-link" do %>
+                <i class="glyphicon glyphicon-edit"></i> Edit
+              <% end %>
+              <%= link_to resource, method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-sm btn-link pull-right"  do %>
+                <i class="glyphicon glyphicon-remove"></i> Delete
+              <% end %>
+            </div>
+          </div><!-- end .panel-footer -->
+        </div><!-- end .panel -->
+      </div>
+    <% end %>
+  </div>
+</div>
